@@ -1,0 +1,13 @@
+<h1 *ngIf="salvou">Slavou!</h1>
+<form [formGroup]="profileForm">
+  <mat-form-field>
+    <input matInput placeholder="Nome" formControlName="nome" (blur)="mudar()">
+  </mat-form-field>
+  <mat-error *ngIf=" fields.nome.invalid && (fields.nome.dirty || fields.nome.touched)">Campo obrigatório</mat-error>
+
+  <mat-form-field>
+    <input matInput placeholder="Email" formControlName="email" (blur)="mudar()">
+  </mat-form-field>
+  <mat-error *ngIf="false">Campo obrigatório</mat-error>
+
+</form>
