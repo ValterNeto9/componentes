@@ -1,5 +1,5 @@
 <h1 *ngIf="salvou">Slavou!</h1>
-<form [formGroup]="profileForm">
+<form [formGroup]="profileForm" (onSubmit)="validar()" >
   <mat-form-field>
     <input matInput placeholder="Nome" formControlName="nome" (blur)="mudar()">
   </mat-form-field>
@@ -8,6 +8,6 @@
   <mat-form-field>
     <input matInput placeholder="Email" formControlName="email" (blur)="mudar()">
   </mat-form-field>
-  <mat-error *ngIf="false">Campo obrigatório</mat-error>
+  <mat-error *ngIf=" fields.email.invalid && (fields.email.dirty || fields.email.touched)">Campo obrigatório</mat-error>
 
 </form>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CrudService } from '../crud.service';
 
@@ -14,16 +14,15 @@ export class FormComponent implements OnInit {
 
   constructor( public formBuilder: FormBuilder
     , public crudService: CrudService ) {
+
     crudService.getSalvar().subscribe( data => {
-      this.validarForm( data );
-      //this.salvou = data;
+      this.validar( data );
     });
 
     this.profileForm = this.formBuilder.group({
       nome: [ null, Validators.required ],
       email: [ null, Validators.required ]
     });
-    console.log('inicial: ',  this.profileForm );
   }
 
   get fields () {
@@ -33,15 +32,14 @@ export class FormComponent implements OnInit {
   ngOnInit() {
   }
 
-  validarForm( _data ) {
+  validar( _data ) {
+    console.log( _data );
+
     if ( this.profileForm.valid ) {
-      this.salvou = true;
+      console.log('validou!');
+    } else {
+      this.fields.nome.markAsTouched();
+      this.fields.email.markAsTouched();
     }
-    this.profileForm.markAsDirty();
   }
-
-  mudar() {
-    console.log( this.profileForm );
-  }
-
 }
