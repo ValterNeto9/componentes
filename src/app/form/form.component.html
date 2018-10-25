@@ -3,11 +3,11 @@
   <mat-form-field>
     <input matInput placeholder="Nome" formControlName="nome" (blur)="mudar()">
   </mat-form-field>
-  <mat-error *ngIf=" fields.nome.invalid && (fields.nome.dirty || fields.nome.touched)">Campo obrigatório</mat-error>
+  <mat-error *ngIf="validaCampo('nome')">Campo obrigatório</mat-error>
 
   <mat-form-field>
     <input matInput placeholder="Email" formControlName="email" (blur)="mudar()">
   </mat-form-field>
-  <mat-error *ngIf=" fields.email.invalid && (fields.email.dirty || fields.email.touched)">Campo obrigatório</mat-error>
+  <mat-error *ngIf=" validaCampo('email')">Campo obrigatório</mat-error>
 
 </form>

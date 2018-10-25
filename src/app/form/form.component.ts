@@ -32,14 +32,19 @@ export class FormComponent implements OnInit {
   ngOnInit() {
   }
 
+  validaCampo( _campo ) {
+    return (this.fields[ _campo ].invalid && (this.fields[ _campo ].dirty || this.fields[ _campo ].touched));
+  }
+
   validar( _data ) {
     console.log( _data );
 
     if ( this.profileForm.valid ) {
       console.log('validou!');
     } else {
-      this.fields.nome.markAsTouched();
-      this.fields.email.markAsTouched();
+      Object.keys(this.fields).forEach( field => {
+        this.fields[ field ].markAsTouched();
+      });
     }
   }
 }
